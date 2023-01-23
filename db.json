@@ -1,0 +1,48 @@
+{
+  "profile": [
+    {
+      "name": "Thomas",
+      "id": 1,
+      "age": 30,
+      "location": "Lakewood, CO",
+      "bio": "I am a student at flatiron",
+      "image": "https://static.tvtropes.org/pmwiki/pub/images/abcb6534_7913_4eb1_a7a5_62b081ebc628.png",
+      "posts":[
+        {
+          "description":"Hello world, I just start my phase 2 at flatiron!",
+          "date": "1/12/2023"
+        },
+        {
+          "description":"Phase 2 test COMPLETE",
+          "date": "1/20/2023"
+        },
+        {
+          "description":"Starting on my project, THIS WEBSITE!",
+          "date": "1/23/2023"
+        }
+      ]
+    },
+    {
+      "name": "Ryan",
+      "id": 1,
+      "age": 30,
+      "location": "Lakewood, CO",
+      "bio": "Hello I am Thomas' alter ego",
+      "image": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/365e5edb-7b7f-415a-81c7-a848936e9e38.__CR0,0,300,300_PT0_SX300_V1___.jpg",
+      "posts":[
+        {
+          "description":"Hello world, I just start my phase 2 at flatiron!",
+          "date": "1/12/2023"
+        },
+        {
+          "description":"Phase 2 test COMPLETE",
+          "date": "1/20/2023"
+        },
+        {
+          "description":"Starting on my project, THIS WEBSITE!",
+          "date": "1/23/2023"
+        }
+      ]
+    }
+  ]
+}
