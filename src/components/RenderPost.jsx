@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 
 function RenderPost({post}) {
 
-    console.log(post)
+    
     return(
         <div className="card mb-3" style={{width: "540px"}}>
             <div className="row g-0">
@@ -18,6 +18,7 @@ function RenderPost({post}) {
                         <p className="card-text">{post.post}</p>
                         <p className="card-text">{post.date}</p>
                         <button>👍</button>
+                        <button>👎</button>
                     </div>
                 </div>
             </div>

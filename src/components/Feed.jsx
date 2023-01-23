@@ -1,22 +1,21 @@
 import React, {useEffect, useState} from "react";
 import RenderPost from "./RenderPost";
+import NewPost from "./NewPost";
 
-function Feed({posts}){
+function Feed({posts, profiles, handleNewPost}){
 
+    posts.sort((a,b) => {
+        return new Date(b.date) - new Date(a.date)
+    })
 
-posts.sort((a,b) => {
-    return new Date(b.date) - new Date(a.date)
-})
+    const renderPost = posts.map((post, index) => {
+        return <RenderPost key={index} post={post}/>
+    })
 
-const renderPost = posts.map((post) => {
-    console.log(post)
-    return <RenderPost key={post.id} post={post}/>
-})
-console.log(posts[0])
-    
     return(
         <div>
             <h3>Posts</h3>
+            <NewPost profiles={profiles} handleNewPost={handleNewPost} />
             {renderPost}
         </div>
     )
