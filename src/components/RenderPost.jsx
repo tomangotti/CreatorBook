@@ -5,6 +5,13 @@ import { Navigate } from "react-router-dom";
 
 function RenderPost({post}) {
 
+    function handleLike(){
+        console.log(post.id)
+    }
+
+    function handleDislike(){
+        console.log(post.id)
+    }
     
     return(
         <div className="card mb-3" style={{width: "540px"}}>
@@ -17,8 +24,8 @@ function RenderPost({post}) {
                         <h5 className="card-title">{post.name}</h5>
                         <p className="card-text">{post.post}</p>
                         <p className="card-text">{post.date}</p>
-                        <button>👍</button>
-                        <button>👎</button>
+                        <button onClick={handleLike} >👍</button>
+                        <button onClick={handleDislike} >👎</button>
                     </div>
                 </div>
             </div>

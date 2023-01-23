@@ -1,8 +1,9 @@
+// data // 
 import { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
-
+// components //
 import NavBar from './components/NavBar'
 import Feed from './components/Feed'
 import Support from './components/Support'
@@ -11,10 +12,11 @@ import ProfilePage from './components/ProfilePage'
 
 
 function App() {
-  
+  // states //
   const [profiles, setProfiles] = useState([])
   const [posts, setPosts] = useState([])
 
+  // initial fetch //
   useEffect(() => {
     fetch('http://localhost:3000/profile')
     .then(r => r.json())
@@ -24,6 +26,7 @@ function App() {
     })
   },[])
 
+  // creating the post list from from get data//
   function createPostList(data){
     let postList = []
     for(const key1 of data){
@@ -41,14 +44,16 @@ function App() {
     setPosts(postList)
   }
 
+  // creating new post both localling and patching //
   function handleNewPost(id, newPost, image, name, key){
-    
+    //creating date//
     let today = new Date()
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth()+1).padStart(2, '0');
     let yyyy = today.getFullYear();
     let date = mm + '/' + dd + '/' + yyyy;
 
+    // updating posts localling //
     let keyId = profiles.indexOf(key)
     console.log(profiles[keyId].posts)
     const postObj = {
@@ -60,10 +65,13 @@ function App() {
     }
     setPosts([...posts, postObj])
     
+    // creating patch locally //
     const patchObj = {
       posts: [ ...profiles[keyId].posts, {
         description: newPost,
-        date: date
+        date: date,
+        likes: 0,
+        dislikes: 0
       }
       ]
     }
@@ -81,13 +89,17 @@ function App() {
 
   }
 
+  // function to add new user after FETCH // 
+  function handleNewUser(user){
+    setProfiles([...profiles, user])
+  }
+
   return (
     <div className="App">
       <NavBar />
-      
         <Routes>
           <Route path='/' element={<Feed posts={posts} profiles={profiles} handleNewPost={handleNewPost} />} />
-          <Route path='/newprofile' element={<NewProfileForm />} />
+          <Route path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser}/>} />
           <Route path='/support' element={<Support />} />
           <Route path='/profile' element={<ProfilePage />} />
         </Routes>

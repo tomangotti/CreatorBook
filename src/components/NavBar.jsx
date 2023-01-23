@@ -31,7 +31,6 @@ function NavBar(){
                     aria-current="page"
                     >Support</NavLink>
             </li>
-
         </ul>
         <form className="d-flex" role="search">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{height: "50px"}}/>
