@@ -1,17 +1,20 @@
 import React, {useState} from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 
 
-function RenderPost({post}) {
+function RenderPost({post }) {
+
+    const [countLikes, setCountLikes] = useState(post.likes)
+    const [countDislikes, setCountDislikes] = useState(post.dislikes)
 
     function handleLike(){
-        console.log(post.id)
+        setCountLikes((prevCount) => prevCount + 1)
     }
-
+    
     function handleDislike(){
-        console.log(post.id)
+        setCountDislikes((prevCount) => prevCount + 1)
     }
     
 
@@ -20,7 +23,7 @@ function RenderPost({post}) {
             <div className="row g-0">
                 <div className="col-md-4">
                     <NavLink
-                    to="/profile"
+                    to={`/profile/${post.id}`}
                     exact>
                     <img src={post.image} className="img-fluid rounded-start" alt="image of profile" />
                     </NavLink>
@@ -30,8 +33,8 @@ function RenderPost({post}) {
                         <h5 className="card-title">{post.name}</h5>
                         <p className="card-text">{post.post}</p>
                         <p className="card-text">{post.date}</p>
-                        <button onClick={handleLike} >👍</button>
-                        <button onClick={handleDislike} >👎</button>
+                        <button onClick={handleLike}>{countLikes}👍</button>
+                        <button onClick={handleDislike} >{countDislikes}👎</button>
                     </div>
                 </div>
             </div>

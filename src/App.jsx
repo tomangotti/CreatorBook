@@ -1,7 +1,7 @@
 // data // 
 import { useState, useEffect } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 // components //
 import NavBar from './components/NavBar'
@@ -15,6 +15,8 @@ function App() {
   // states //
   const [profiles, setProfiles] = useState([])
   const [posts, setPosts] = useState([])
+
+  
 
   // initial fetch //
   useEffect(() => {
@@ -36,7 +38,9 @@ function App() {
             id: key1.id,
             image: key1.image,
             post: key2.description,
-            date: key2.date
+            date: key2.date,
+            likes: key2.likes,
+            dislikes: key2.dislikes,
           }
         postList.push(postObj)
       }
@@ -94,7 +98,8 @@ function App() {
     setProfiles([...profiles, user])
   }
 
- 
+
+
   return (
     <div className="App">
       <NavBar />
@@ -102,7 +107,7 @@ function App() {
           <Route exact path='/' element={<Feed posts={posts} profiles={profiles} handleNewPost={handleNewPost}  />} />
           <Route exact path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser}/>} />
           <Route exact path='/support' element={<Support />} />
-          <Route exact path='/profile' element={<ProfilePage />} />
+          <Route path='/profile/:id' element={<ProfilePage />} />
         </Routes>
 
     </div>
