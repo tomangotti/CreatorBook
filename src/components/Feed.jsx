@@ -10,7 +10,7 @@ function Feed({posts, profiles, handleNewPost}){
 
     // rendering posts in the renderpost component //
     const renderPost = posts.map((post, index) => {
-        return <RenderPost key={index} post={post}/>
+        return <RenderPost key={index} post={post}  />
     })
 
     return(

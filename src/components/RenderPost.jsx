@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+
 
 
 
@@ -13,11 +14,16 @@ function RenderPost({post}) {
         console.log(post.id)
     }
     
+
     return(
         <div className="card mb-3" style={{width: "540px"}}>
             <div className="row g-0">
                 <div className="col-md-4">
-                    <img src={post.image} className="img-fluid rounded-start" alt="image of profile"  />
+                    <NavLink
+                    to="/profile"
+                    exact>
+                    <img src={post.image} className="img-fluid rounded-start" alt="image of profile" />
+                    </NavLink>
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">

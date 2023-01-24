@@ -1,7 +1,7 @@
 // data // 
 import { useState, useEffect } from 'react'
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 
 // components //
 import NavBar from './components/NavBar'
@@ -94,14 +94,15 @@ function App() {
     setProfiles([...profiles, user])
   }
 
+ 
   return (
     <div className="App">
       <NavBar />
         <Routes>
-          <Route path='/' element={<Feed posts={posts} profiles={profiles} handleNewPost={handleNewPost} />} />
-          <Route path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser}/>} />
-          <Route path='/support' element={<Support />} />
-          <Route path='/profile' element={<ProfilePage />} />
+          <Route exact path='/' element={<Feed posts={posts} profiles={profiles} handleNewPost={handleNewPost}  />} />
+          <Route exact path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser}/>} />
+          <Route exact path='/support' element={<Support />} />
+          <Route exact path='/profile' element={<ProfilePage />} />
         </Routes>
 
     </div>
