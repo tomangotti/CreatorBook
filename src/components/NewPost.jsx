@@ -24,7 +24,6 @@ function NewPost({profiles, handleNewPost}) {
         if(userName === "Choose User") return alert('PLEASE SELECT USER')
         
         for(const key of profiles){
-            
             if(key.name === userName){
                 handleNewPost(key.id, newPost, key.image, key.name, key)
             }

@@ -17,7 +17,6 @@ function RenderPost({post }) {
         setCountDislikes((prevCount) => prevCount + 1)
     }
     
-
     return(
         <div className="card mb-3" style={{width: "540px"}}>
             <div className="row g-0">

@@ -41,6 +41,7 @@ function App() {
             date: key2.date,
             likes: key2.likes,
             dislikes: key2.dislikes,
+            time: key2.time
           }
         postList.push(postObj)
       }
@@ -52,11 +53,12 @@ function App() {
   function handleNewPost(id, newPost, image, name, key){
     //creating date//
     let today = new Date()
+    console.log(today)
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth()+1).padStart(2, '0');
     let yyyy = today.getFullYear();
     let date = mm + '/' + dd + '/' + yyyy;
-
+    
     // updating posts localling //
     let keyId = profiles.indexOf(key)
     console.log(profiles[keyId].posts)
@@ -65,8 +67,10 @@ function App() {
       image: image,
       post: newPost,
       id: id,
-      date: date
+      date: date,
+      time: today
     }
+    console.log(postObj)
     setPosts([postObj, ...posts])
     
     // creating patch locally //
@@ -74,6 +78,7 @@ function App() {
       posts: [ ...profiles[keyId].posts, {
         description: newPost,
         date: date,
+        time: today,
         likes: 0,
         dislikes: 0
       }
@@ -112,13 +117,14 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+        
         <Routes>
           <Route exact path='/' element={<Feed posts={posts} profiles={profiles} handleNewPost={handleNewPost}  />} />
           <Route exact path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser} profiles={profiles} />} />
           <Route exact path='/support' element={<Support />} />
           <Route path='/profile/:id' element={<ProfilePage handleDelete={handleDelete} />} />
         </Routes>
-
+        
     </div>
   )
 }

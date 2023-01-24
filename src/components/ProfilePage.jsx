@@ -11,7 +11,7 @@ function ProfilePage({handleDelete}){
     const [posts, setPosts] = useState([])
 
     const params = useParams()
-    console.log(params)
+    
 
     useEffect(() => {
         fetch(`http://localhost:3000/profile/${params.id}`)
@@ -24,7 +24,7 @@ function ProfilePage({handleDelete}){
 
     const imageSize = {
         height: "400px",
-        width: "400px"
+        width: "600px"
     }
 
     let userPosts = [];

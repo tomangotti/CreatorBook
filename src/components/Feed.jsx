@@ -5,8 +5,9 @@ import NewPost from "./NewPost";
 function Feed({posts, profiles, handleNewPost}){
     // sorting post list in order of data //
     posts.sort((a,b) => {
-        return new Date(b.date) - new Date(a.date)
+        return new Date(b.time) - new Date(a.time)
     })
+    
 
     // rendering posts in the renderpost component //
     const renderPost = posts.map((post, index) => {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function NewProfileForm({handleNewUser, profiles}){
 
     const [numOfUsers, setNumOfUsers] = useState(profiles.length + 1)
-
+    const navigate = useNavigate();
     function handleSubmit(e){
         e.preventDefault()
         const newUser = {
@@ -29,7 +29,7 @@ function NewProfileForm({handleNewUser, profiles}){
         .then(user => handleNewUser(user))
 
         e.target.reset()
-        return <NavLink to={`profile/${numOfUsers}`}></NavLink>
+        navigate('/')
     }
 
     return(
