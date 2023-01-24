@@ -106,6 +106,7 @@ function App() {
     let filteredProfiles = profiles.filter((profile) => {
       return profile.id !== id;
     })
+    setProfiles(filteredProfiles)
   }
 
   return (
@@ -113,7 +114,7 @@ function App() {
       <NavBar />
         <Routes>
           <Route exact path='/' element={<Feed posts={posts} profiles={profiles} handleNewPost={handleNewPost}  />} />
-          <Route exact path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser}/>} />
+          <Route exact path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser} profiles={profiles} />} />
           <Route exact path='/support' element={<Support />} />
           <Route path='/profile/:id' element={<ProfilePage handleDelete={handleDelete} />} />
         </Routes>
