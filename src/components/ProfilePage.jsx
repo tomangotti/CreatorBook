@@ -1,12 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 
 import RenderPost from "./RenderPost";
 
 
 
-function ProfilePage(){
+function ProfilePage({handleDelete}){
     const [profile, setProfile] = useState([])
     const [posts, setPosts] = useState([])
 
@@ -47,6 +47,16 @@ function ProfilePage(){
     }
     
     function handleClick(e){
+        let deleteId = profile.id
+        handleDelete(profile.id)
+        fetch(`http://localhost:3000/profile/${deleteId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        })
+        .then(r => r.json())
         
     }
     
@@ -61,7 +71,11 @@ function ProfilePage(){
                 <p className="card-text">Age: {profile.age}</p>
                 <p className="card-text">BIO: {profile.bio}</p>
             </div>
-            <button onClick={handleClick}>Delete Profile</button>
+            <NavLink 
+            to="/"
+            exact
+            ><button onClick={handleClick}>Delete Profile</button>
+            </NavLink>
         </div>
         {posts}
         </>

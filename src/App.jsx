@@ -67,7 +67,7 @@ function App() {
       id: id,
       date: date
     }
-    setPosts([...posts, postObj])
+    setPosts([postObj, ...posts])
     
     // creating patch locally //
     const patchObj = {
@@ -98,7 +98,15 @@ function App() {
     setProfiles([...profiles, user])
   }
 
-
+  function handleDelete(id){
+    let filteredPosts = posts.filter((post) => {
+      return post.id !== id;
+    })
+    setPosts(filteredPosts)
+    let filteredProfiles = profiles.filter((profile) => {
+      return profile.id !== id;
+    })
+  }
 
   return (
     <div className="App">
@@ -107,7 +115,7 @@ function App() {
           <Route exact path='/' element={<Feed posts={posts} profiles={profiles} handleNewPost={handleNewPost}  />} />
           <Route exact path='/newprofile' element={<NewProfileForm handleNewUser={handleNewUser}/>} />
           <Route exact path='/support' element={<Support />} />
-          <Route path='/profile/:id' element={<ProfilePage />} />
+          <Route path='/profile/:id' element={<ProfilePage handleDelete={handleDelete} />} />
         </Routes>
 
     </div>
