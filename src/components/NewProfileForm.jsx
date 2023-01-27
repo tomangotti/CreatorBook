@@ -10,7 +10,6 @@ function NewProfileForm({handleNewUser, profiles}){
         const newUser = {
             name: e.target.name.value,
             age: e.target.age.value,
-            age: e.target.age.value,
             location: e.target.location.value,
             bio: e.target.bio.value,
             image: e.target.image.value,

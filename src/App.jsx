@@ -23,6 +23,7 @@ function App() {
     fetch('http://localhost:3000/profile')
     .then(r => r.json())
     .then(data => {
+      console.log(data)
       setProfiles(data)
       createPostList(data)
     })
